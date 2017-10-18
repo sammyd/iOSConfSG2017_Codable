@@ -3,13 +3,18 @@
 import Foundation
 
 struct Person: Codable {
+  enum Relation: Int, Codable {
+    case mum
+    case dad
+  }
+  
   let name: String
   let age: Int
   let favouriteColour: String
-  let relatives: [String : String]
+  let relatives: [Relation : String]
 }
 
-let julie = Person(name: "julie", age: 43, favouriteColour: "orange", relatives: ["mum": "joan", "dad": "peter"])
+let julie = Person(name: "julie", age: 43, favouriteColour: "orange", relatives: [.mum: "joan", .dad: "peter"])
 
 let encoder = JSONEncoder()
 let jsonData = try! encoder.encode(julie)
