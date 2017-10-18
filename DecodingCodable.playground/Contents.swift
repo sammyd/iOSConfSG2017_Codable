@@ -7,13 +7,22 @@ enum Relation: String, Codable {
 
 extension UIColor: Encodable {
   public func encode(to encoder: Encoder) throws {
-    var container = encoder.unkeyedContainer()
+    enum ColourKeys: CodingKey {
+      case red
+      case green
+      case blue
+      case alpha
+    }
+    
+    var container = encoder.container(keyedBy: ColourKeys.self)
     var colour : (r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat) = (0, 0, 0, 0)
     getRed(&colour.r, green: &colour.g, blue: &colour.b, alpha: &colour.a)
-    try container.encode(colour.r)
-    try container.encode(colour.g)
-    try container.encode(colour.b)
-    try container.encode(colour.a)
+    try container.encode(colour.r, forKey: .red)
+    try container.encode(colour.g, forKey: .green)
+    try container.encode(colour.b, forKey: .blue)
+    try container.encode(colour.a, forKey: .alpha)
+  }
+}
   }
 }
 
