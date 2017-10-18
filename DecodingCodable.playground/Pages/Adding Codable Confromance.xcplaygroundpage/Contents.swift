@@ -2,8 +2,16 @@
 
 import UIKit
 
-extension UIColor {
-  
+extension UIColor: Encodable {
+  public func encode(to encoder: Encoder) throws {
+    var container = encoder.unkeyedContainer()
+    var colour: (r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat) = (0, 0, 0, 0)
+    getRed(&colour.r, green: &colour.g, blue: &colour.b, alpha: &colour.a)
+    try container.encode(colour.r)
+    try container.encode(colour.g)
+    try container.encode(colour.b)
+    try container.encode(colour.a)
+  }
 }
 
 struct Person: Encodable {
@@ -17,5 +25,6 @@ let julie = Person(name: "julie", age: 43, favouriteColour: #colorLiteral(red: 0
 let encoder = JSONEncoder()
 let jsonData = try! encoder.encode(julie)
 
+String(bytes: jsonData, encoding: .utf8)
 
 //: [Next](@next)
