@@ -17,7 +17,10 @@ struct Product: Codable {
 guard let jsonUrl = Bundle.main.url(forResource: "products", withExtension: "json") else { fatalError() }
 
 do {
-  
+  let jsonData = try Data(contentsOf: jsonUrl)
+  let decoder = JSONDecoder()
+  let products = try decoder.decode([Product].self, from: jsonData)
+  print(products)
 } catch let error {
   print("There was a problem: \(error)")
 }
