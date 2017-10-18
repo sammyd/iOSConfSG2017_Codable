@@ -6,9 +6,10 @@ struct Person: Codable {
   let name: String
   let age: Int
   let favouriteColour: String
+  let relatives: [String : String]
 }
 
-let julie = Person(name: "julie", age: 43, favouriteColour: "orange")
+let julie = Person(name: "julie", age: 43, favouriteColour: "orange", relatives: ["mum": "joan", "dad": "peter"])
 
 let encoder = JSONEncoder()
 let jsonData = try! encoder.encode(julie)
