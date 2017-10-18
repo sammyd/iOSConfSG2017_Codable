@@ -5,59 +5,36 @@ enum Relation: String, Codable {
   case dad
 }
 
-extension UIColor: Encodable {
-  public func encode(to encoder: Encoder) throws {
-    enum ColourKeys: CodingKey {
-      case red
-      case green
-      case blue
-      case alpha
-    }
-    
-    var container = encoder.container(keyedBy: ColourKeys.self)
-    var colour : (r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat) = (0, 0, 0, 0)
-    getRed(&colour.r, green: &colour.g, blue: &colour.b, alpha: &colour.a)
-    try container.encode(colour.r, forKey: .red)
-    try container.encode(colour.g, forKey: .green)
-    try container.encode(colour.b, forKey: .blue)
-    try container.encode(colour.a, forKey: .alpha)
+struct Colour: Codable {
+  let red, green, blue, alpha: CGFloat
+  init(from colour: UIColor) {
+    var cmpts : (r: CGFloat, g: CGFloat, b: CGFloat, a: CGFloat) = (0, 0, 0, 0)
+    colour.getRed(&cmpts.r, green: &cmpts.g, blue: &cmpts.b, alpha: &cmpts.a)
+    red = cmpts.r
+    green = cmpts.g
+    blue = cmpts.b
+    alpha = cmpts.a
+  }
+  
+  var uiColor: UIColor {
+    return UIColor(red: red, green: green, blue: blue, alpha: alpha)
   }
 }
 
-//extension UIColor: Decodable {
-//  public required init(from decoder: Decoder) throws {
-//    // No good—can't put a required initialiser in an extension
-//  }
-//}
-
-class MyColor: UIColor, Decodable {
-  required init(from decoder: Decoder) {
-
-  }
-  
-  required init(_colorLiteralRed red: Float, green: Float, blue: Float, alpha: Float) {
-    fatalError("init(_colorLiteralRed:green:blue:alpha:) has not been implemented")
-  }
-  
-  required init?(coder aDecoder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
-}
-
-struct Person: Encodable {
+struct Person: Codable {
   let name: String
   let age: Int
-  let favouriteColour: UIColor
+  let favouriteColour: Colour
   let relations: [Relation: String]
 }
 
-let julie = Person(name: "julie", age: 43, favouriteColour: #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1), relations: [.mum: "Lucy", .dad: "Peter"])
+let julie = Person(name: "julie", age: 43, favouriteColour: Colour(from: #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)), relations: [.mum: "Lucy", .dad: "Peter"])
 
 let encoder = JSONEncoder()
 let data = try! encoder.encode(julie)
 
 let jsonString = String(bytes: data, encoding: .utf8)
 
-//let decoder = JSONDecoder()
-//try! decoder.decode(Person.self, from: data)
-
+let decoder = JSONDecoder()
+let decodedPerson = try! decoder.decode(Person.self, from: data)
+decodedPerson.favouriteColour.uiColor
