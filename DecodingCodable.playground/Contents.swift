@@ -23,6 +23,24 @@ extension UIColor: Encodable {
     try container.encode(colour.a, forKey: .alpha)
   }
 }
+
+//extension UIColor: Decodable {
+//  public required init(from decoder: Decoder) throws {
+//    // No good—can't put a required initialiser in an extension
+//  }
+//}
+
+class MyColor: UIColor, Decodable {
+  required init(from decoder: Decoder) {
+
+  }
+  
+  required init(_colorLiteralRed red: Float, green: Float, blue: Float, alpha: Float) {
+    fatalError("init(_colorLiteralRed:green:blue:alpha:) has not been implemented")
+  }
+  
+  required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
   }
 }
 
