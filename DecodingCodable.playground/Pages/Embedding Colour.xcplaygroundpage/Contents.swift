@@ -2,7 +2,7 @@
 
 import UIKit
 
-struct Colour {
+struct Colour: Codable {
   let red, green, blue, alpha: CGFloat
   
   init(from colour: UIColor) {
@@ -25,7 +25,7 @@ struct Person: Codable {
   let favouriteColour: Colour
 }
 
-let julie = Person(name: "julie", age: 43, favouriteColour: #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1))
+let julie = Person(name: "julie", age: 43, favouriteColour: Colour(from: #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)))
 
 let encoder = JSONEncoder()
 let jsonData = try! encoder.encode(julie)
@@ -34,5 +34,6 @@ let jsonString = String(bytes: jsonData, encoding: .utf8)
 
 let decoder = JSONDecoder()
 let decoded = try! decoder.decode(Person.self, from: jsonData)
+decoded.favouriteColour.uiColor
 
 //: [Next](@next)
