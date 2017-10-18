@@ -7,6 +7,14 @@
 import Foundation
 
 struct Product: Codable {
+  private enum CodingKeys: String, CodingKey {
+    case id
+    case name
+    case image_url = "cover_url"
+    case url = "relative_url"
+    case sku
+  }
+  
   let id: Int
   let name: String
   let image_url: URL?
