@@ -1,6 +1,6 @@
 import UIKit
 
-enum Relation: Int, Codable {
+enum Relation: String, Codable {
   case mum
   case dad
 }
