@@ -1,3 +1,5 @@
+//: # Encoding JSON
+
 import UIKit
 
 enum Relation: String, Codable {
@@ -38,3 +40,8 @@ let jsonString = String(bytes: data, encoding: .utf8)
 let decoder = JSONDecoder()
 let decodedPerson = try! decoder.decode(Person.self, from: data)
 decodedPerson.favouriteColour.uiColor
+
+
+//: ---
+//: [Decoding >>](@next)
+
