@@ -21,6 +21,25 @@ extension UIColor: Encodable {
   }
 }
 
+//extension UIColor: Decodable {
+//
+//}
+
+class MyColour : UIColor {
+  init(decoder: Decoder) {
+    // TODO
+  }
+  
+  @nonobjc required convenience init(_colorLiteralRed red: Float, green: Float, blue: Float, alpha: Float) {
+    fatalError("init(_colorLiteralRed:green:blue:alpha:) has not been implemented")
+  }
+  
+  required init?(coder aDecoder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+}
+
+
 struct Person: Encodable {
   let name: String
   let age: Int
