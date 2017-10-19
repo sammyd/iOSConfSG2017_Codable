@@ -226,15 +226,15 @@ let repos: [Repo]? = (JSONValue.parse <^> json) >>- decodeArray
 
 ---
 
-![140%](images/value.gif)
+![](images/value.png)
 
 ---
 
-![140%](images/array.gif)
+![](images/array.png)
 
 ---
 
-![140%](images/object.gif)
+![](images/object.png)
 
 ---
 
