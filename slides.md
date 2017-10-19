@@ -266,6 +266,24 @@ public protocol Encoder {
 
 ---
 
+![](images/encoder_01.png)
+
+---
+
+![](images/encoder_02.png)
+
+---
+
+![](images/encoder_03.png)
+
+---
+
+![](images/encoder_04.png)
+
+---
+
+
+
 # Decodable
 
 ```swift
