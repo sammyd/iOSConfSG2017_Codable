@@ -339,10 +339,10 @@ public protocol Decoder {
 # Some Links from Clever People
 
 + [swiftunboxed.com/stdlib/json-encoder-encodable/](https://swiftunboxed.com/stdlib/json-encoder-encodable/)
-+ [swiftunboxed.com/stdlib/json-decoder-decodable/](swiftunboxed.com/stdlib/json-decoder-decodable/)
-+ [mikeash.com/pyblog/friday-qa-2017-07-14-swiftcodable.html](mikeash.com/pyblog/friday-qa-2017-07-14-swiftcodable.html)
-+ [mikeash.com/pyblog/friday-qa-2017-07-28-a-binary-coder-for-swift.html](mikeash.com/pyblog/friday-qa-2017-07-28-a-binary-coder-for-swift.html)
-+ [lists.swift.org/pipermail/swift-evolution/Week-of-Mon-20170731/038522.html](lists.swift.org/pipermail/swift-evolution/Week-of-Mon-20170731/038522.html)
++ [swiftunboxed.com/stdlib/json-decoder-decodable/](https://swiftunboxed.com/stdlib/json-decoder-decodable/)
++ [mikeash.com/pyblog/friday-qa-2017-07-14-swiftcodable.html](https://mikeash.com/pyblog/friday-qa-2017-07-14-swiftcodable.html)
++ [mikeash.com/pyblog/friday-qa-2017-07-28-a-binary-coder-for-swift.html](https://mikeash.com/pyblog/friday-qa-2017-07-28-a-binary-coder-for-swift.html)
++ [lists.swift.org/pipermail/swift-evolution/Week-of-Mon-20170731/038522.html](https://lists.swift.org/pipermail/swift-evolution/Week-of-Mon-20170731/038522.html)
 
 ---
 
